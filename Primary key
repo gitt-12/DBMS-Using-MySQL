@@ -1,0 +1,92 @@
+Question No. 2                                                                                                                Date: 17/01/2023
+Q. (1) Create Table  Student  (SID varchar (20), Sname Varchar (30), Department varchar (30), Age int, GPA real) and Course (CID varchar (20), Cname Varchar (30), Strength int, Year int )with at least 5 entries.
+SID and CID are the primary keys for respective tables
+Answer the following queries:
+1.	Find the name and department of those students who are older than 25 years and scored a GPA greater than 8.5
+2.	Find the course details which are either established in the year 1980 or which has strength less than 50.
+Solution:-
+mysql> create table Student(SID varchar (20), Sname Varchar (30), Department varchar (30), Age int, GPA real);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into Student values('MS101', 'Git', 'Mathematics', 22, 8.24);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Student values('MS102', 'Swagata', 'Mathematics', 22, 7.3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Student values('MS103', 'Bidyu', 'Chemistry', 26, 8.7);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Student values('MS104', 'Aarohi', 'Physics', 27, 9.1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Student values('MS105', 'Roohi','Geology', 21, 7.9);
+Query OK, 1 row affected (0.00 sec)
+mysql> create table Course(CID varchar (20), Cname Varchar (30), Strength int, Year int );
+Query OK, 0 rows affected (0.04 sec)
+mysql> insert into Course values('MCC101', 'ABC', 57, 1980);
+Query OK, 1 row affected (0.01 sec)
+mysql> insert into Course values('MCC502', 'DEF', 35, 1997);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Course values('MCC503', 'GHI', 60, 1988);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Course values('MCC504', 'PQR', 30, 1975);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Course values('MCC505', 'XYZ', 55, 1991);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Course values('MCC504', 'PQR', 30, 1975);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Course values('MCC505', 'XYZ', 55, 1991);
+Query OK, 1 row affected (0.00 sec)
+mysql> alter table Student add primary key(SID);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table Course add primary key(CID);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from Student;
++-------+---------+-------------+------+------+
+| SID   | Sname   | Department  | Age  | GPA  |
++-------+---------+-------------+------+------+
+| MS101 | Git     | Mathematics |   22 | 8.24 |
+| MS102 | Swagata | Mathematics |   22 |  7.3 |
+| MS103 | Bidyu   | Chemistry   |   26 |  8.7 |
+| MS104 | Aarohi  | Physics     |   27 |  9.1 |
+| MS105 | Roohi   | Geology     |   21 |  7.9 |
++-------+---------+-------------+------+------+
+5 rows in set (0.00 sec)
+mysql> select * from Course;
++--------+-------+----------+------+
+| CID    | Cname | Strength | Year |
++--------+-------+----------+------+
+| MCC101 | ABC   |       57 | 1980 |
+| MCC502 | DEF   |       35 | 1997 |
+| MCC503 | GHI   |       60 | 1988 |
+| MCC504 | PQR   |       30 | 1975 |
+| MCC505 | XYZ   |       55 | 1991 |
++--------+-------+----------+------+
+5 rows in set (0.00 sec)
+mysql> select Sname, Department from Student where Age>25 and GPA>8.5;
++--------+------------+
+| Sname  | Department |
++--------+------------+
+| Bidyu  | Chemistry  |
+| Aarohi | Physics    |
++--------+------------+
+2 rows in set (0.00 sec)
+mysql> select * from Course where Strength<50 or Year=1980;
++--------+-------+----------+------+
+| CID    | Cname | Strength | Year |
++--------+-------+----------+------+
+| MCC101 | ABC   |       57 | 1980 |
+| MCC502 | DEF   |       35 | 1997 |
+| MCC504 | PQR   |       30 | 1975 |
++--------+-------+----------+------+
+3 rows in set (0.00 sec) 
