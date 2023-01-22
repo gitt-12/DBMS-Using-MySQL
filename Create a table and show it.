@@ -1,0 +1,89 @@
+Q. Create Database MS102
+
+Create Table  Student (ID varchar, Name Varchar, Major varchar (30), GPA real) with at least 5 entries’
+ 
+ 
+
+Solution:-
+C:\Users\hp>mysql -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+
+mysql> create database ms0061;
+Query OK, 1 row affected (0.12 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| ms0061             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.04 sec)
+
+mysql> use ms0061;
+Database changed
+mysql> create table Student(ID varchar(20), Name varchar(20), Major varchar(20), GPA real);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into Student values('MS101', 'A', 'Mathematics', 8.5);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Student values('MS102', 'B', 'Physics', 7.0);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Student values('MS103', 'C', 'Chemistry', 8.25);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Student values('MS104', 'D', 'Mathematics', 6.8);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Student values('MS105', 'E', 'Biology', 6.0);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from Student;
++-------+------+-------------+------+
+| ID    | Name | Major       | GPA  |
++-------+------+-------------+------+
+| MS101 | A    | Mathematics |  8.5 |
+| MS102 | B    | Physics     |    7 |
+| MS103 | C    | Chemistry   | 8.25 |
+| MS104 | D    | Mathematics |  6.8 |
+| MS105 | E    | Biology     |    6 |
++-------+------+-------------+------+
+5 rows in set (0.00 sec)
+mysql> select Name from Student where ID='MS103';
++------+
+| Name |
++------+
+| C    |
++------+
+1 row in set (0.00 sec)
+
+mysql> select Name from Student where Major='Mathematics';
++------+
+| Name |
++------+
+| A    |
+| D    |
++------+
+2 rows in set (0.00 sec)
+mysql> select Name from Student where GPA>8.0;
++------+
+| Name |
++------+
+| A    |
+| C    |
++------+
+2 rows in set (0.00 sec)
+mysql> select Name, GPA from Student where Major='Physics';
++------+------+
+| Name | GPA  |
++------+------+
+| B    |    7 |
++------+------+
+1 row in set (0.00 sec)
